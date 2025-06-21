@@ -1,0 +1,23 @@
+name: CI/CD Pipeline for Ticket Booking System
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1-cicd_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Specify the version of the action
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v2  # Corrected the action name
+        with:
+          distribution: 'adopt'  # 'oracle' is not a valid option; use 'adopt' or 'zulu'
+          java-version: '21'
+
+      - name: Run sample Java file hello world
+        run: java ../../src/test/java/com/example/mysqldemo/JavaTestHello.java
